@@ -12,7 +12,7 @@ class CommandPal {
     this.app = new App({
       target: document.body,
       props: {
-        hotkey: this.options.hotkey || 'ctrl+space',
+        hotkey: this.options.hotkey || "ctrl+space",
         hotkeysGlobal: this.options.hotkeysGlobal || false,
         inputData: this.options.commands || [],
         paletteId: this.options.id || "CommandPal",
@@ -21,7 +21,8 @@ class CommandPal {
         hideButton: this.options.hideButton || false,
         emptyResultText: this.options.emptyResultText || "No matching commands…",
         displayShortcutSymbols: this.options.displayShortcutSymbols || false,
-        symbolMapping: this.options.symbolMapping || {"ctrl":"⌃","shift":"⇧","command":"⌘","cmd":"⌘","option":"⌥","alt":"⌥","space":"⎵","capslock":"⇪","return":"↩︎","enter":"↩︎","esc":"⎋","backspace":"⌫","delete":"⌫"}
+        symbolMapping: this.options.symbolMapping || {"ctrl":"⌃","shift":"⇧","command":"⌘","cmd":"⌘","option":"⌥","alt":"⌥","space":"⎵","capslock":"⇪","return":"↩︎","enter":"↩︎","esc":"⎋","backspace":"⌫","delete":"⌫"},
+        shortcutOpenPalette: typeof this.options.shortcutOpenPalette === "undefined"? true: this.options.shortcutOpenPalette,
       },
     });
     const ctx = this;

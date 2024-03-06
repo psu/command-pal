@@ -22,6 +22,7 @@
   export let emptyResultText;
   export let displayShortcutSymbols;
   export let symbolMapping;
+  export let shortcutOpenPalette;
 
   const optionsFuse = {
     isCaseSensitive: false,
@@ -51,11 +52,13 @@
     });
     setAllShortCuts(inputData, async command => {
       focusedElement = document.activeElement
-      showModal = true;
-      dispatch("opened");
-      await asyncTimeout(200);
-      selectedIndex = inputData.findIndex(i => i.name === command.name);
-      await asyncTimeout(100);
+      if (shortcutOpenPalette) {
+        showModal = true;
+        dispatch("opened");
+        await asyncTimeout(200);
+        selectedIndex = inputData.findIndex(i => i.name === command.name);
+        await asyncTimeout(100);
+      }
       onHandleCommand(command);
     });
   });
