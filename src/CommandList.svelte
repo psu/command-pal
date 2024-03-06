@@ -103,7 +103,7 @@
               <span class="symbol">{symbol}</span>
             {/each}
           {:else}
-            {item.short}
+            {item.shortcut}
           {/if}
         </kyb>
       {:else}

@@ -62,17 +62,16 @@
 
   function setItems(newItems) {
     items = newItems;
-    if (displayShortcutSymbols) {
+    if (displayShortcutSymbols === true) {
       items.forEach((i)=>{
         if (!i.shortcut) return
         i.symbols = i.shortcut.split('+').map(c => {
           const symbol = symbolMapping[c.toLowerCase()]
-          return (typeof symbol !== 'undefined')? symbol: c.toUpperCase();
+          return (typeof symbol === 'undefined')? c.toUpperCase(): symbol;
         })
       })
     }
     itemsFiltered = items;
-    console.log(items)
     fuse = new Fuse(items, optionsFuse);
   }
 
