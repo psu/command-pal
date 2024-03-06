@@ -3,6 +3,7 @@
   const dispatch = createEventDispatcher();
   export let items: any = [];
   export let selectedIndex = 0;
+  export let noMatches = '';
   let selectedIndexLast = 0;
 
   let listEl: HTMLDivElement;
@@ -84,7 +85,7 @@
 
 <div class="items-list" bind:this={listEl}>
   {#if !items.length} 
-    <p class="no-matches">No matching commands...</p>
+    <p class="no-matches">{noMatches}</p>
   {/if}
   {#each items as item, index}
     <p

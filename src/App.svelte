@@ -19,6 +19,7 @@
   export let placeholderText: string;
   export let hideButton: boolean;;
   export let paletteId: string;
+  export let emptyResultText;
 
   const optionsFuse = {
     isCaseSensitive: false,
@@ -184,6 +185,7 @@
       <CommandList
         items={itemsFiltered}
         {selectedIndex}
+        noMatches={emptyResultText}
         on:clickedIndex={onClickedIndex} />
     </div>
   </PaletteContainer>
