@@ -20,6 +20,8 @@
   export let hideButton: boolean;;
   export let paletteId: string;
   export let emptyResultText;
+  export let displayShortcutSymbols;
+  export let symbolMapping;
 
   const optionsFuse = {
     isCaseSensitive: false,
@@ -31,10 +33,9 @@
   let searchField;
   let loadingChildren = false;
   let selectedIndex: any = "";
-  let items = inputData;
-  let itemsFiltered = inputData;
-  let fuse = new Fuse(items, optionsFuse);
+  let items, itemsFiltered, fuse;
   let focusedElement;
+  setItems(inputData)
 
   onMount(() => {
     initShortCuts(hotkeysGlobal);
@@ -61,7 +62,17 @@
 
   function setItems(newItems) {
     items = newItems;
+    if (displayShortcutSymbols) {
+      items.forEach((i)=>{
+        if (!i.shortcut) return
+        i.symbols = i.shortcut.split('+').map(c => {
+          const symbol = symbolMapping[c.toLowerCase()]
+          return (typeof symbol !== 'undefined')? symbol: c.toUpperCase();
+        })
+      })
+    }
     itemsFiltered = items;
+    console.log(items)
     fuse = new Fuse(items, optionsFuse);
   }
 

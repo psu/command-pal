@@ -81,6 +81,9 @@
     margin: 5px 0px;
     padding: 0px 7px;
   }
+  .symbol {
+    padding: 0 1px;
+  }
 </style>
 
 <div class="items-list" bind:this={listEl}>
@@ -94,7 +97,15 @@
       on:mousedown={e => clickedIndex(e, index)}>
       <span>{item.name}</span>
       {#if !!item.shortcut}
-        <kyb>{item.shortcut}</kyb>
+        <kyb>
+          {#if !!item.symbols}
+            {#each item.symbols as symbol}
+              <span class="symbol">{symbol}</span>
+            {/each}
+          {:else}
+            {item.short}
+          {/if}
+        </kyb>
       {:else}
         <span />
       {/if}
