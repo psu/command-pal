@@ -4,6 +4,7 @@
   export let items: any = [];
   export let selectedIndex = 0;
   export let noMatches = '';
+  export let show = false;
   let selectedIndexLast = 0;
 
   let listEl: HTMLDivElement;
@@ -14,6 +15,10 @@
       return;
     }
     dispatch("clickedIndex", hoverIndex);
+  }
+
+  function hover(e: any, hoverIndex: number) {
+    dispatch("hover", hoverIndex)
   }
 
   function checkSelectedIndexInView() {
@@ -49,6 +54,7 @@
 
   }
 
+  $: {if (show) checkSelectedIndexInView()}
   $: {
     if (selectedIndexLast != selectedIndex)
       setTimeout(() => checkSelectedIndexInView());
@@ -63,6 +69,7 @@
     margin: 0px;
     padding: 0px 7px;
     height: 36px;
+    cursor: none;
   }
   .item:hover {
     cursor: pointer;
@@ -95,6 +102,7 @@
     <p
       class="item"
       class:selected={index == selectedIndex}
+      on:mousemove={e => hover(e, index)}
       on:mousedown={e => clickedIndex(e, index)}>
       <span>{item.name}</span>
       {#if !!item.shortcut}

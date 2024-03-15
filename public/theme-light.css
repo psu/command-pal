@@ -20,9 +20,6 @@
 .item {
   color: #222;
 }
-.item:hover {
-  background-color: rgb(117, 173, 236);
-}
 .item.selected {
   background-color: rgb(93, 138, 190);
 }

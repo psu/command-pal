@@ -105,6 +105,10 @@
     onHandleCommand(command);
   }
 
+  function onHover(e) {
+    selectedIndex = e.detail;
+  }
+
   function onKeyEnter(e) {
     const command = itemsFiltered[selectedIndex];
     onHandleCommand(command);
@@ -199,6 +203,8 @@
         items={itemsFiltered}
         {selectedIndex}
         noMatches={emptyResultText}
+        bind:show={showModal}
+        on:hover={onHover}
         on:clickedIndex={onClickedIndex} />
     </div>
   </PaletteContainer>
