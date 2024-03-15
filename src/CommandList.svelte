@@ -28,11 +28,12 @@
     selectedIndexLast = selectedIndex;
     const isPressingUpArrow = !isPressingDownArrow;
 
-    const viewTop = listEl.scrollTop + 36;
+    const itemHeight = listItemEl.clientHeight
+    const viewTop = listEl.scrollTop + itemHeight;
     const viewBottom = listEl.scrollTop + listEl.clientHeight;
-    const itemTop = listItemEl.offsetTop - 8;
+    const itemTop = listItemEl.offsetTop + itemHeight - listEl.offsetTop;
     const viewTopIdealPressingDown = itemTop - listEl.clientHeight;
-    const viewTopIdealPressingUp = itemTop - 36;
+    const viewTopIdealPressingUp = itemTop - itemHeight;
     const isWithinView = itemTop <= viewBottom && itemTop >= viewTop;
 
     if (isWithinView) {

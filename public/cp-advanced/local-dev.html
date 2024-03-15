@@ -38,6 +38,9 @@
       #MyCommandPal .mobile-button {
         border: 2px solid rgba(215, 79, 79, 0.636);
       }
+      #MyCommandPal .search {
+        height: 50px;
+      }
     </style>
   </head>
 
@@ -80,6 +83,7 @@
     <!-- body -->
     <div id="cp-body">
       <script>
+        window.commandPalIgnoreBlur = true
         const c = new CommandPal({
           id: 'MyCommandPal',
           hotkey: 'ctrl+g',
@@ -105,6 +109,15 @@
                 }
               },
             },
+            { name: 'Dummy 1' },
+            { name: 'Dummy 2' },
+            { name: 'Dummy 3' },
+            { name: 'Dummy 5' },
+            { name: 'Dummy 4' },
+            { name: 'Dummy 2' },
+            { name: 'Dummy 3' },
+            { name: 'Dummy 5' },
+            { name: 'Dummy 4' },
             {
               name: '> Change Language',
               shortcut: 'ctrl+shift+l',
