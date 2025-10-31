@@ -93,6 +93,7 @@
       searchField.focus();
       loadingChildren = false;
     } else {
+      dispatch("beforeExec");
       dispatch("exec", command);
       showModal = false;
     }
